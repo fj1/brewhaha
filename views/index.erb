@@ -1,0 +1,86 @@
+<!-- leaflet quick start guide/tutorial -->
+<!-- http://leafletjs.com/examples/quick-start.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Brewhaha</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <!-- leaflet cdn -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <!-- end leaflet cdn -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/css/foundation.min.css"/>
+    <style type="text/css">
+      /* boxing everything for debugging */
+      * {
+         -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+         box-sizing: border-box;
+         border: 1px solid red;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div id="bigDiv" class="row">
+  
+      <!-- **************** LEFT **************** -->
+      <div id="userDiv" class="small-3 large-3 columns">
+        <h1 id="title">Brewhaha</h1>
+        <p>Welcome!</p>
+        <p>Choose your filters:</p>
+        <form>
+          <!-- user text input -->
+          <input type="text" name="userInput" value="enter a city or five digit zipcode"/>
+          <!-- state dropdown -->
+          <select name="state_name" id="state_name">            
+            <% states.each do |state_name| %>
+              <option value="<%= state_name %>"><%= state_name %></option>
+            <% end %>
+          </select>
+          <!-- location type dropdown -->
+          <a href="#" class="small round button dropdown" data-dropdown="dropLoc">Location Type</a>
+          <ul id="dropLoc" class="f-dropdown" data-dropdown-content>
+            <li><a href="#">Micro Brewery</a></li>    <li><a href="#">Macro Brewery</a></li>
+            <li><a href="#">Brewpub</a></li>          <li><a href="#">Tasting</a></li>
+            <li><a href="#">Restaurant</a></li>       <li><a href="#">Cidery</a></li>
+            <li><a href="#">Meadery</a></li>
+          </ul>
+          <!-- organic switch -->
+          <div class="switch round medium">
+            <input id="checkboxSwitch" type="checkbox"/>
+            <label for="checkboxSwitch"></label>
+            <span>Organic</span>
+          </div>
+          <!-- submit -->
+          <a href="#" class="button round" value="Submit">Submit</a>
+          <!-- error msg -->
+          <p>future error text</p>
+        </form>
+      </div> <!-- end class="small-3 large-3 columns" -->
+
+      <!-- **************** MAP **************** -->
+      <div id="rightDiv" class="small-9 large-9 columns">
+        <div id="map"></div>
+
+        <!-- **************** DETAIL DIV **************** -->
+        <div class="row">
+        <div id="detailDiv"></div>
+        </div> <!-- end small class="row" -->
+
+      </div> <!-- end class="small-9 large-9 columns" -->
+    </div>  <!-- end large class="row" -->
+
+    <!-- **************** requiring all the things **************** -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/map.js"></script>
+    <script>$(document).foundation()</script>
+  </body>
+</html>

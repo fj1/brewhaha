@@ -1,0 +1,49 @@
+#bigDiv {
+  /* max-width overrides foundation's gutters */
+  max-width: none;
+  height: 100%;
+}
+
+/* set the container div to 100% */
+/* so that we can set its children's heights to a percentage */
+#rightDiv {
+  height: 100%;
+}
+
+/************ user div ************/
+#userDiv {
+  height: 100%;
+  border: 5px solid blue;
+  text-align: center;
+}
+
+#title {
+  text-align: center;
+}
+
+#userDiv p, input {
+  text-align: center;
+}
+
+#checkboxSwitch + label {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+#checkboxSwitch + label + span {
+  vertical-align: 0.7em;
+}
+
+/************ map div ************/
+
+#map {
+  height: 60%;
+}
+
+/************ detail div ************/
+#detailDiv {
+  height: 40%;
+  border: 5px solid green;
+}
+
+
