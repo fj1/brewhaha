@@ -1,3 +1,13 @@
+// ************ default map view ************
+// TO-DO: make default the user's location
+var map = L.map('map').setView([30.3, -97.8], 11)
+L.tileLayer('http://{s}.tiles.mapbox.com/v3/ak1.j499a0cd/{z}/{x}/{y}.png', {
+  // attribution: 'Map data &copy; []',
+  maxZoom: 18
+}).addTo(map);
+
+
+// ************ dynamically building map ************
 function buildMap(mapData) {
   // ***** initialize map, centered on specific geo coordinates *****
   // maybe eventually have the map centered to the user's location??
