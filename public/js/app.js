@@ -4,6 +4,11 @@ var user_loc_type;
 var user_organic;
 var submit_data;
 
+// *********** clear error text if present ***********
+$('#userInput').on('click', function() {
+  $('#errorText').text("");
+});
+
 // *********** grab user input ***********
 var getInput = function(){
   user_text = $('#userInput').val();
@@ -60,6 +65,7 @@ var checkInput = function() {
     // error msg for text input
     else {
       console.log('please reenter a city or zip code');
+      $("#errorText").text("Please reenter the city or zip code.");
     }
   }
   console.log("submit_data is ", submit_data);
