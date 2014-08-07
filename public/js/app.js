@@ -4,7 +4,7 @@ var user_loc_type;
 var user_organic;
 var submit_data;
 
-// *********** clear error text if present ***********
+// *********** clear error text if it's present ***********
 $('#userInput').on('click', function() {
   $('#errorText').text("");
 });
@@ -64,28 +64,44 @@ var checkInput = function() {
     }
     // error msg for text input
     else {
-      console.log('please reenter a city or zip code');
-      $("#errorText").text("Please reenter the city or zip code.");
+      return {
+        success: false,
+        error: "Please reenter the city or zip code."
+      }
     }
   }
+
+  // check that user entered something
+  if (_.size(submit_data) === 4) {
+    return {
+      success: false,
+      error: "Please choose filters for your search."
+    }
+  }
+
   console.log("submit_data is ", submit_data);
+  return { success: true };
 } // end checkInput
 
 // *********** submit event handler ***********
 $('#submit').on('click', function(e) {
   e.preventDefault();
   getInput();
-  checkInput();
+  var result = checkInput();
 
-  // SEND AJAX REQUEST ... ON SUCCESS, call buildMap
-  $.ajax({
-    url: '/query',
-    type: 'GET',
-    data: submit_data,
-    success: function(data) {
-      buildMap(data);
-    }
-  })
+  if (result.success) {  
+    $.ajax({
+      url: '/query',
+      type: 'GET',
+      data: submit_data,
+      success: function(data) {
+        buildMap(data);
+      }
+    });    
+  }
+  else {
+    $('#errorText').text(result.error);
+  }
 });
 
 
