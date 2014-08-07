@@ -13,7 +13,6 @@
 /************ user div ************/
 #userDiv {
   height: 100%;
-  border: 5px solid blue;
   text-align: center;
 }
 
@@ -43,7 +42,8 @@
 /************ detail div ************/
 #detailDiv {
   height: 40%;
-  border: 5px solid green;
+  text-align: center;
+  border: 1px solid red;
 }
 
 

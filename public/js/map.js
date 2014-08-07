@@ -9,16 +9,6 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v3/ak1.j499a0cd/{z}/{x}/{y}.png', {
 
 // ************ dynamically building map ************
 function buildMap(mapData) {
-  // ***** initialize map, centered on specific geo coordinates *****
-  // maybe eventually have the map centered to the user's location??
-  var map = L.map('map').setView([55.4, -131.8], 13)
-
-  // ***** add a tile layer to map *****
-  L.tileLayer('http://{s}.tiles.mapbox.com/v3/ak1.j499a0cd/{z}/{x}/{y}.png', {
-    // attribution: 'Map data &copy; []',
-    maxZoom: 18
-  }).addTo(map);
-
   // ***** iterate through mapData and create marker for each item *****
   var lat;
   var lng;
