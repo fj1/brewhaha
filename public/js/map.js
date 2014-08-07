@@ -9,20 +9,32 @@ function buildMap(mapData) {
     maxZoom: 18
   }).addTo(map);
 
-  // ***** adding a marker *****
-  console.log("in map.js, map_data is ", mapData);
-  var lat = mapData.brewery_lat;
-  var lng = mapData.brewery_lng;
-  var marker = L.marker([lat, lng]).addTo(map);
+  // ***** iterate through mapData and create marker for each item *****
+  var lat;
+  var lng;
+  var bname;
+  var baddr;
+  var bcity;
+  var bstate;
+  var bzip;
 
-  // ***** popup for marker *****
-  var bname = mapData.brewery_name;
-  var baddr = mapData.brewery_addr;
-  var bcity = mapData.brewery_city;
-  var bstate = mapData.brewery_state;
-  var bzip = mapData.brewery_zipcode;
-  // TO DO - ITERATE THRU RESULTS TO PLACE MARKER FOR EACH RESULT
-  marker.bindPopup(bname + "<br>" + baddr + "<br>" + bcity + ", " + bstate + " " + bzip).openPopup();
+  console.log("in map.js, map_data is ", mapData);
+  var length = mapData.length;
+
+  for (var i = 0; i < length; i++) {
+    lat = mapData[i].brewery_lat;
+    lng = mapData[i].brewery_lng;
+    // ** set marker for brewery **
+    marker = L.marker([lat, lng]).addTo(map);
+
+    bname = mapData[i].brewery_name;
+    baddr = mapData[i].brewery_addr;
+    bcity = mapData[i].brewery_city;
+    bstate = mapData[i].brewery_state;
+    bzip = mapData[i].brewery_zipcode;
+    // ** set popup for brewery marker **
+    marker.bindPopup(bname + "<br>" + baddr + "<br>" + bcity + ", " + bstate + " " + bzip).openPopup();
+  }
 
   // ***** adding popups ******
   // useful for attaching clickable info to a particular obj on a map

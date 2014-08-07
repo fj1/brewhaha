@@ -11,7 +11,7 @@ set :bind, '0.0.0.0'
 
 helpers do
   def states
-    ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
+    [ "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
       "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",
       "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
       "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
@@ -25,6 +25,11 @@ helpers do
       "Washington",
       "West Virginia",
       "Wisconsin", "Wyoming"]
+  end
+
+  def locType 
+    [ "Micro", "Macro", "Brewpub",
+      "Tasting", "Restaurant", "Cidery", "Meadery"]
   end
 end
 
@@ -40,17 +45,22 @@ get '/query' do
 
   # querying the api
   # TO-DO: GET THIS TO RESPOND TO USER INPUT
+  # HAVE LOGIC TO DECIDE WHICH CALLS TO API TO MAKE
   api_resp = brewery_db.locations.all(
-        region: "alaska",
-        inPlanning: "Y"
-    )
+    region: params[:region],
+    locationType: params[:locationType] 
+    # inPlanning: "N",
+    # isClosed: "N",
+    # openToPublic: "Y",
+    # status: "verified"
+  )
   # couldn't use json parse and instead used .inspect
   # because of the way the gem returned a class and not a json
-  # puts api_resp.inspect
+  puts api_resp.inspect
 
   # then iterate thru api_resp HASH to grab necessary info and save into @map_data
   @map_data = []
-  api_resp.each do | x |
+  api_resp.each do |x|
     @map_data.push({ :brewery_name => x.brewery.name, 
       :brewery_lat => x.latitude,
       :brewery_lng => x.longitude,
@@ -64,6 +74,7 @@ get '/query' do
       :brewery_isOrganic => x.brewery.isOrganic
     })
   end
+
   puts @map_data
 
   # sets the type of the content to json
