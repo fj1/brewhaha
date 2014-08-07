@@ -7,7 +7,7 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v3/ak1.j499a0cd/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
-// ************ dynamically building map ************
+// ************ dynamically build map ************
 function buildMap(mapData) {
   // ***** iterate through mapData and create marker for each item *****
   var lat;
@@ -21,11 +21,16 @@ function buildMap(mapData) {
   console.log("in map.js, map_data is ", mapData);
   var length = mapData.length;
 
+  var marker_array = [];
+
   for (var i = 0; i < length; i++) {
     lat = mapData[i].brewery_lat;
     lng = mapData[i].brewery_lng;
     // ** set marker for brewery **
     marker = L.marker([lat, lng]).addTo(map);
+
+    // ** set array of markers **
+    marker_array.push([lat, lng]);
 
     bname = mapData[i].brewery_name;
     baddr = mapData[i].brewery_addr;
@@ -35,6 +40,9 @@ function buildMap(mapData) {
     // ** set popup for brewery marker **
     marker.bindPopup(bname + "<br>" + baddr + "<br>" + bcity + ", " + bstate + " " + bzip).openPopup();
   }
+
+  // zoom map to fit all the markers
+  map.fitBounds(marker_array);
 
   // ***** adding popups ******
   // useful for attaching clickable info to a particular obj on a map

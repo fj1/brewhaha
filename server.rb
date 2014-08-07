@@ -39,6 +39,7 @@ end
 
 # server.rb queries api
 get '/query' do
+
   brewery_db = BreweryDB::Client.new do |config|
     config.api_key = ENV['BREWERY_API_KEY']
   end
@@ -46,14 +47,12 @@ get '/query' do
   # querying the api
   # TO-DO: GET THIS TO RESPOND TO USER INPUT
   # HAVE LOGIC TO DECIDE WHICH CALLS TO API TO MAKE
-  api_resp = brewery_db.locations.all(
-    region: params[:region],
-    locationType: params[:locationType] 
-    # inPlanning: "N",
-    # isClosed: "N",
-    # openToPublic: "Y",
-    # status: "verified"
+  puts params
+
+  api_resp = brewery_db.locations.all( 
+    params
   )
+
   # couldn't use json parse and instead used .inspect
   # because of the way the gem returned a class and not a json
   puts api_resp.inspect

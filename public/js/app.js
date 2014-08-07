@@ -1,9 +1,10 @@
-// *********** grab user input ***********
 var user_text;
 var user_state;
 var user_loc_type;
 var user_organic;
+var submit_data;
 
+// *********** grab user input ***********
 var getInput = function(){
   user_text = $('#userInput').val();
   user_state = $('#stateName').val();
@@ -24,7 +25,12 @@ var getInput = function(){
 var checkInput = function() {
   // dynamically build params to pass to .ajax call
   // then pass the params as data:submit_data
-  submit_data = { isOrganic: user_organic };
+  submit_data = {  
+    inPlanning: "N",
+    isClosed: "N",
+    openToPublic: "Y",
+    status: "verified"
+  };
 
   if (user_state != "State") {
     submit_data['region'] = user_state;
@@ -32,6 +38,12 @@ var checkInput = function() {
 
   if (user_loc_type != "Location Type") {
     submit_data['locationType'] = user_loc_type;
+  }
+
+  // only search for organic if user requests it
+  // (if unchecked, both organic and non-organic are allowed)
+  if (user_organic === "Y") {
+    submit_data['isOrganic'] = "Y"
   }
 
   if (user_text != "") {
@@ -50,6 +62,7 @@ var checkInput = function() {
       console.log('please reenter a city or zip code');
     }
   }
+  console.log("submit_data is ", submit_data);
 } // end checkInput
 
 // *********** submit event handler ***********
@@ -63,12 +76,6 @@ $('#submit').on('click', function(e) {
     url: '/query',
     type: 'GET',
     data: submit_data,
-    //data: {
-      // user_text: user_text,
-    //  region: user_state,
-    //  locationType: user_loc_type,
-      // isOrganic: user_organic
-    //},
     success: function(data) {
       buildMap(data);
     }
