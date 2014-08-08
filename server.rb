@@ -9,6 +9,34 @@ Dotenv.load
 # for vagrant
 set :bind, '0.0.0.0'
 
+# Caching
+$searchCache = {}
+
+def search(params)
+  puts params
+  # Compose cache key
+  key = "#{params[:locality]};#{params[:region]};#{params[:locationTypeDisplay]}"
+
+
+  # First check if the key exists in cache (searchCache)
+  if $searchCache.include?(key)
+    # If it's there, just return the result
+    return $searchCache[key]
+  # Otherwise
+  else
+    # Make Brewery API call
+    brewery_db = BreweryDB::Client.new do |config|
+      config.api_key = ENV['BREWERY_API_KEY']
+    end
+    api_resp = brewery_db.locations.all(params)
+
+    # Save results in cache (setting the api result to the value)
+    $searchCache[key] = api_resp
+    # Return the result
+    return api_resp
+  end
+end
+
 helpers do
   def states
     [ "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -37,25 +65,17 @@ get '/' do
   erb :index
 end
 
-# server.rb queries api
 get '/query' do
+  # puts params
 
-  brewery_db = BreweryDB::Client.new do |config|
-    config.api_key = ENV['BREWERY_API_KEY']
-  end
+  api_resp = search(params)
 
-  # querying the api
-  # TO-DO: GET THIS TO RESPOND TO USER INPUT
-  # HAVE LOGIC TO DECIDE WHICH CALLS TO API TO MAKE
-  puts params
+  # puts @map_data
 
-  api_resp = brewery_db.locations.all( 
-    params
-  )
-
+  # tangent!
   # couldn't use json parse and instead used .inspect
   # because of the way the gem returned a class and not a json
-  puts api_resp.inspect
+  # puts api_resp.inspect
 
   # then iterate thru api_resp HASH to grab necessary info and save into @map_data
   @map_data = []
@@ -78,8 +98,6 @@ get '/query' do
       :brewery_tours => x.tourInfo
     })
   end
-
-  puts @map_data
 
   # sets the type of the content to json
   content_type :json

@@ -56,6 +56,18 @@ body {
   font-size: 1.25em;
 }
 
+#submit {
+  background-color: #f8ae29;
+  color: black;
+  font-family: 'Josefin Sans', sans-serif; 
+  font-size: 1.3em;
+  border: 2px solid #e69708;
+}
+
+#submit:hover {
+  background-color: #faca73;
+}
+
 /*#checkboxSwitch + label {
   display: inline-block;
   margin-bottom: 0;
@@ -86,6 +98,7 @@ body {
 div.leaflet-popup-content {
   font-size: 1.5em;
 }
+
 
 
 
