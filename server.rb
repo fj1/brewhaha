@@ -70,7 +70,9 @@ get '/query' do
       :brewery_zipcode => x.postalCode,
       :brewery_phone => x.phone,
       :brewery_type => x.locationTypeDisplay,
-      :brewery_isOrganic => x.brewery.isOrganic
+      :brewery_isOrganic => x.brewery.isOrganic,
+      :brewery_website => x.website,
+      :brewery_phone => x.phone
     })
   end
 

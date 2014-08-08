@@ -9,57 +9,55 @@ var currentMarkers = [];
 
 // ************ dynamically build map ************
 function buildMap(mapData) {
-
-  // clear map if it's populated
-  // if (mapData.length > 0) {
-  clearMap();
-    // map.clearLayers();
-  // }
-
-  // ***** iterate through mapData and create marker for each item *****
-  var lat;
-  var lng;
-  var bname;
-  var baddr;
-  var bcity;
-  var bstate;
-  var bzip;
-
   console.log("in map.js, map_data is ", mapData);
+
+  clearMap();
 
   var length = mapData.length;
   var latlongs = [];
+
+  // ***** iterate through mapData and create marker for each item *****
   for (var i = 0; i < length; i++) {
-    lat = mapData[i].brewery_lat;
-    lng = mapData[i].brewery_lng;
+    var lat = mapData[i].brewery_lat;
+    var lng = mapData[i].brewery_lng;
+    
+    var venue = mapData[i];
     // ** set marker for brewery **
     var marker = L.marker([lat, lng]).addTo(map);
+
+    marker.venue = venue;
+    marker.on('click', function () {
+      console.log("what is it", this.venue);
+    });
     currentMarkers.push(marker);
 
     // ** set array of markers **
     latlongs.push([lat, lng]);
 
-    bname = mapData[i].brewery_name;
-    baddr = mapData[i].brewery_addr;
-    bcity = mapData[i].brewery_city;
-    bstate = mapData[i].brewery_state;
-    bzip = mapData[i].brewery_zipcode;
     // ** set popup for brewery marker **
-    marker.bindPopup(bname + "<br>" + baddr + "<br>" + bcity + ", " + bstate + " " + bzip).openPopup();
+    marker.bindPopup(venue.brewery_name + "<br>" + venue.brewery_addr + "<br>" +
+        venue.brewery_city + ", " + venue.brewery_state + " " + venue.brewery_zipcode).openPopup();
+
+    // display brewery info in div
+    marker.on('click', function() {
+      $("#detailDiv").empty();
+      $("#detailDiv").text(this.venue.brewery_name
+        + " " + this.venue.brewery_addr
+        + ", " + this.venue.brewery_city
+        + ", " + this.venue.brewery_state
+        + ", " + this.venue.brewery_zipcode     
+      );
+    }.bind(marker));
   }
 
   // zoom map to fit all the markers
   map.fitBounds(latlongs);
-  console.log("Marker count:", currentMarkers.length);
-  // window.layerGroup = L.layerGroup(currentMarkers);
-  
+
 } // end buildMap function
 
 // ************ clear map ************
 var clearMap = function() {
   console.log("Clearing map", currentMarkers.length);
-  // L.clearLayers('map');
-  // console.log("marker_array is ", marker_array);
   var length = currentMarkers.length;
   for (var i = 0; i < length; i++) {
     console.log("Removing:", currentMarkers);
