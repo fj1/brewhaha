@@ -82,7 +82,10 @@ var checkInput = function() {
 } // end checkInput
 
 // *********** submit event handler ***********
-$('#submit').on('click', function(e) {
+
+// using the form.submit means that the form will submit
+// on both 'enter' keyup and the submit button
+$('form').submit(function(e) {
   e.preventDefault();
   getInput();
   var result = checkInput();
@@ -99,8 +102,8 @@ $('#submit').on('click', function(e) {
   }
   else {
     $('#errorText').text(result.error);
-  }
-});
+  } 
+})
 
 
 
