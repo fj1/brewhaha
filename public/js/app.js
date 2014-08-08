@@ -96,10 +96,10 @@ $('form').submit(function(e) {
       type: 'GET',
       data: submit_data,
       success: function(data) {
-        data = JSON.parse(data);
+        // data = JSON.parse(data);
         if (data.error) {
           console.log(data.error);
-          $('#errorText').text("No breweries match your query.")
+          $('#errorText').text("Sorry, no breweries match your query.");
         } else {
           buildMap(data);
         }
