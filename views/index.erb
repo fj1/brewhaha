@@ -34,6 +34,7 @@
         <h1 id="title"><i class="fa fa-beer"></i>  Brewhaha</h1>
         <p>Welcome!</p>
         <p>Choose your filters:</p>
+
         <form>
           <!-- user text input -->
           <input type="text" id="userInput" name="userInput" placeholder="enter a city or five digit zipcode" onfocus="this.value=''"/>
@@ -60,8 +61,11 @@
           <!-- submit -->
           <a href="#" class="button round" id="submit" value="Submit">Submit</a>
           <!-- error msg -->
-          <p id="errorText"></p>
+          <p id="errorText">error text</p>
         </form>
+
+        <div id="detailDiv">temp details text</div>
+
       </div> <!-- end class="small-3 large-3 columns" -->
 
       <!-- **************** MAP **************** -->
@@ -69,10 +73,10 @@
         <div id="map"></div>
 
         <!-- **************** DETAIL DIV **************** -->
-        <div class="row" id="detailDiv">
-          <!-- <div id="detailDivLeft" class="small-6 large-6 columns">future brewery details</div>
-          <div id="detailDivRight"class="small-6 large-6 columns">right detail div</div> -->
-        </div> <!-- end small class="row" -->
+        <!-- <div class="row" id="detailDiv">
+          <div id="detailDivLeft" class="small-6 large-6 columns">future brewery details</div>
+          <div id="detailDivRight"class="small-6 large-6 columns">right detail div</div>
+        </div>  --><!-- end small class="row" -->
 
       </div> <!-- end class="small-9 large-9 columns" -->
     </div>  <!-- end large class="row" -->

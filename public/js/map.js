@@ -1,6 +1,6 @@
 // ************ default map view ************
 // TO-DO: make default the user's location
-var map = L.map('map').setView([30.3, -97.8], 11)
+var map = L.map('map').setView([30.26, -97.75], 11)
 L.tileLayer('http://{s}.tiles.mapbox.com/v3/ak1.j499a0cd/{z}/{x}/{y}.png', {
   // attribution: 'Map data &copy; []',
   maxZoom: 18

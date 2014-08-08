@@ -12,7 +12,8 @@
 
 /************ user div ************/
 #userDiv {
-  height: 100%;
+  height: 60%;
+  /*height: 100%;*/
   text-align: center;
 }
 
@@ -36,7 +37,8 @@
 /************ map div ************/
 
 #map {
-  height: 60%;
+  height: 100%;
+  /*height: 60%;*/
 }
 
 /************ detail div ************/
