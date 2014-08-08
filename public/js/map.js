@@ -48,14 +48,13 @@ function buildMap(mapData) {
 
     // display brewery info in div
     marker.on('click', function() {
-      $("#detailDiv").html(this.venue.brewery_name + "<br>"
-        // + this.venue.brewery_addr + "<br>"
-        // + " " + this.venue.brewery_city
-        // + ", " + this.venue.brewery_state
-        // + " " + this.venue.brewery_zipcode + "<br>"    
-        + "Location Type: " + this.venue.brewery_type + "<br><br>"    
+      $("#detailDiv").html(this.venue.brewery_name + "<br>"  
+        + "Location Type: " + this.venue.brewery_type + "<br><br>" 
+        + "<i class='fa fa-phone'></i>" + " "   
         + this.venue.brewery_phone + "<br>"    
-        + " " + this.venue.brewery_website + "<br><br>"
+        + "<i class='fa fa-laptop'></i>" + " "   
+        + "<a href='" + this.venue.brewery_website + "' target='_blank'>"
+        + this.venue.brewery_website + "</a><br><br>"
         // + " " + "is this brewery organic?" + this.venue.brewery_isOrganic + "<br>"
         + "Hours: " + this.venue.brewery_hours + "<br><br>"
         + "Tours: " + this.venue.brewery_tours + "<br>"
@@ -70,14 +69,12 @@ function buildMap(mapData) {
 
 // ************ clear map ************
 var clearMap = function() {
-  // console.log("Clearing map", currentMarkers.length);
   var length = currentMarkers.length;
   for (var i = 0; i < length; i++) {
-    // console.log("Removing:", currentMarkers);
     map.removeLayer(currentMarkers[i]);
   }
   currentMarkers = [];
-} // end clear map
+} 
 
 
 

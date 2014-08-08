@@ -42,7 +42,7 @@ var checkInput = function() {
   }
 
   if (user_loc_type != "Location Type") {
-    submit_data['locationType'] = user_loc_type;
+    submit_data['locationTypeDisplay'] = user_loc_type;
   }
 
   // only search for organic if user requests it

@@ -17,7 +17,6 @@ def search(params)
   # Compose cache key
   key = "#{params[:locality]};#{params[:region]};#{params[:locationTypeDisplay]}"
 
-
   # First check if the key exists in cache (searchCache)
   if $searchCache.include?(key)
     # If it's there, just return the result
@@ -56,7 +55,7 @@ helpers do
   end
 
   def locType 
-    [ "Micro", "Macro", "Brewpub",
+    [ "Micro Brewery", "Macro Brewery", "Brewpub",
       "Tasting", "Restaurant", "Cidery", "Meadery"]
   end
 end
