@@ -6,16 +6,18 @@
     <title>Brewhaha</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <!-- google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,700' rel='stylesheet' type='text/css'>
     <!-- font awesome -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- leaflet cdn -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet-src.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-    <!-- end leaflet cdn -->
+    <!-- foundation -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/css/foundation.min.css"/>
-    <style type="text/css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+<!--     <style type="text/css">
       /* boxing everything for debugging */
       * {
          -webkit-box-sizing: border-box;
@@ -23,17 +25,19 @@
          box-sizing: border-box;
          border: 1px solid red;
         }
-    </style>
+    </style> -->
   </head>
 
   <body>
     <div id="bigDiv" class="row">
   
       <!-- **************** LEFT **************** -->
+      
       <div id="userDiv" class="small-3 large-3 columns">
-        <h1 id="title"><i class="fa fa-beer"></i>  Brewhaha</h1>
-        <p>Welcome!</p>
-        <p>Choose your filters:</p>
+        <img src="images/TwoGuysOnBeerIcon.png" alt="logo" id="logo" height="42" width="42">
+        <h1 id="title">Brewhaha</h1>
+        <p class="greeting">Welcome!</p>
+        <p class="conversation">Choose your filters:</p>
 
         <form>
           <!-- user text input -->
@@ -61,12 +65,13 @@
           <!-- submit -->
           <a href="#" class="button round" id="submit" value="Submit">Submit</a>
           <!-- error msg -->
-          <p id="errorText">error text</p>
+          <p id="errorText" class="conversation"></p>
         </form>
 
-        <div id="detailDiv">temp details text</div>
+        <div id="detailDiv" class="conversation"></div>
 
       </div> <!-- end class="small-3 large-3 columns" -->
+      
 
       <!-- **************** MAP **************** -->
       <div id="rightDiv" class="small-9 large-9 columns">

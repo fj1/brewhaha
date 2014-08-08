@@ -22,6 +22,14 @@ function buildMap(mapData) {
     var lng = mapData[i].brewery_lng;
     
     var venue = mapData[i];
+
+    // reset null values to n/a
+    for (var prop in venue) {
+      if (venue[prop] === null) {
+        venue[prop] = "n/a";
+      }
+    }
+
     // ** set marker for brewery **
     var marker = L.marker([lat, lng]).addTo(map);
 
@@ -45,12 +53,12 @@ function buildMap(mapData) {
         // + " " + this.venue.brewery_city
         // + ", " + this.venue.brewery_state
         // + " " + this.venue.brewery_zipcode + "<br>"    
+        + "Location Type: " + this.venue.brewery_type + "<br><br>"    
         + this.venue.brewery_phone + "<br>"    
-        + this.venue.brewery_type + "<br>"    
-        + " " + this.venue.brewery_website + "<br>"
+        + " " + this.venue.brewery_website + "<br><br>"
         // + " " + "is this brewery organic?" + this.venue.brewery_isOrganic + "<br>"
-        + " " + this.venue.brewery_hours + "<br>"
-        + " " + this.venue.brewery_tours + "<br>"
+        + "Hours: " + this.venue.brewery_hours + "<br><br>"
+        + "Tours: " + this.venue.brewery_tours + "<br>"
       );
     }.bind(marker));
   }

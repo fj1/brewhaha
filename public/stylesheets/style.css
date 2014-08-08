@@ -1,9 +1,18 @@
+* {
+  font-family: 'Josefin Sans', sans-serif; 
+}
+
+body {
+  background-color: #c8df9f;
+}
+
 #bigDiv {
   /* max-width overrides foundation's gutters */
   max-width: none;
   height: 100%;
 }
 
+/*TO DO .... LOOK AT THIS*/
 /* set the container div to 100% */
 /* so that we can set its children's heights to a percentage */
 #rightDiv {
@@ -11,41 +20,72 @@
 }
 
 /************ user div ************/
+
 #userDiv {
-  height: 60%;
+  /*height: 60%;*/
   /*height: 100%;*/
   text-align: center;
 }
 
+#logo {
+  float: left;
+  display: inline-block;
+  height: 6em;
+  width: auto;
+  padding: 10px 0px 0px 5px;
+}
+
 #title {
+  font-family: 'Josefin Sans', sans-serif; 
+  font-weight: 700;
+  font-size: 4em;
   text-align: center;
+  padding-top: 13px;
 }
 
-#userDiv p, input {
-  text-align: center;
+.greeting {
+  font-size: 2em;
+  padding-bottom: 2em;
 }
 
-#checkboxSwitch + label {
+.conversation {
+  font-size: 1.5em;
+}
+
+#userInput, #stateName, #locType {
+  font-size: 1.25em;
+}
+
+/*#checkboxSwitch + label {
   display: inline-block;
   margin-bottom: 0;
 }
 
 #checkboxSwitch + label + span {
   vertical-align: 0.7em;
+}*/
+
+#errorText {
+  color: red;
+  font-weight: 700;
 }
+
+/************ detail div ************/
+
+/*#detailDiv {
+  text-align: center;
+}*/
 
 /************ map div ************/
 
 #map {
   height: 100%;
-  /*height: 60%;*/
+  border-left: 4px solid #586347;
 }
 
-/************ detail div ************/
-#detailDiv {
-  height: 40%;
-  text-align: center;
-  border: 1px solid red;
+div.leaflet-popup-content {
+  font-size: 1.5em;
 }
+
 
 
