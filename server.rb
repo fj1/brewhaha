@@ -64,6 +64,7 @@ get '/query' do
       :brewery_lat => x.latitude,
       :brewery_lng => x.longitude,
       :brewery_addr => x.streetAddress,
+      :brewery_ext_addr => x.extendedAddress,
       :brewery_city => x.locality,
       :brewery_state => x.region,
       :brewery_country => x.countryIsoCode,
@@ -72,7 +73,9 @@ get '/query' do
       :brewery_type => x.locationTypeDisplay,
       # :brewery_isOrganic => x.brewery.isOrganic,
       :brewery_website => x.website,
-      :brewery_phone => x.phone
+      :brewery_phone => x.phone,
+      :brewery_hours => x.hoursOfOperation,
+      :brewery_tours => x.tourInfo
     })
   end
 

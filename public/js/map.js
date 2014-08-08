@@ -41,14 +41,16 @@ function buildMap(mapData) {
     // display brewery info in div
     marker.on('click', function() {
       $("#detailDiv").html(this.venue.brewery_name + "<br>"
-        + this.venue.brewery_addr + "<br>"
-        + " " + this.venue.brewery_city
-        + ", " + this.venue.brewery_state
-        + " " + this.venue.brewery_zipcode + "<br>"    
+        // + this.venue.brewery_addr + "<br>"
+        // + " " + this.venue.brewery_city
+        // + ", " + this.venue.brewery_state
+        // + " " + this.venue.brewery_zipcode + "<br>"    
         + this.venue.brewery_phone + "<br>"    
         + this.venue.brewery_type + "<br>"    
         + " " + this.venue.brewery_website + "<br>"
-        + " " + "is this brewery organic?" + this.venue.brewery_isOrganic + "<br>"
+        // + " " + "is this brewery organic?" + this.venue.brewery_isOrganic + "<br>"
+        + " " + this.venue.brewery_hours + "<br>"
+        + " " + this.venue.brewery_tours + "<br>"
       );
     }.bind(marker));
   }
