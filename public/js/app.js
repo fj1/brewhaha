@@ -96,7 +96,17 @@ $('form').submit(function(e) {
       type: 'GET',
       data: submit_data,
       success: function(data) {
-        buildMap(data);
+        data = JSON.parse(data);
+        if (data.error) {
+          console.log(data.error);
+          $('#errorText').text("No breweries match your query.")
+        } else {
+          buildMap(data);
+        }
+      },
+      // catch any other errors
+      error: function(data) {
+        console.log(data);
       }
     });    
   }
