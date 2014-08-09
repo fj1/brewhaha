@@ -13,7 +13,8 @@ $('#userInput').on('click', function() {
 var getInput = function(){
   user_text = $('#userInput').val();
   user_state = $('#stateName').val();
-  user_loc_type = $('#locType').val(); 
+  user_loc_type = $('#locType').val();
+  console.log("user_loc_type is ", user_loc_type);
   // if ($('#checkboxSwitch').prop('checked')) {
   //   user_organic = "Y";
   // }
@@ -42,7 +43,7 @@ var checkInput = function() {
   }
 
   if (user_loc_type != "Location Type") {
-    submit_data['locationTypeDisplay'] = user_loc_type;
+    submit_data['locationType'] = user_loc_type;
   }
 
   // only search for organic if user requests it
@@ -88,19 +89,25 @@ var checkInput = function() {
 $('form').submit(function(e) {
   e.preventDefault();
   getInput();
+  showLoadingGif(); 
+  $('#detailDiv').text("");
+
   var result = checkInput();
 
-  if (result.success) {  
+  if (result.success) {     
     $.ajax({
       url: '/query',
       type: 'GET',
       data: submit_data,
+      // next line tells jquery to except json
+      dataType: 'json',
       success: function(data) {
-        // data = JSON.parse(data);
-        if (data.error) {
-          console.log(data.error);
+        if (data["error"]) {
+          console.log("An error:", data.error);
           $('#errorText').text("Sorry, no breweries match your query.");
-        } else {
+          hideLoadingGif();
+        } 
+        else {
           buildMap(data);
         }
       },
@@ -112,9 +119,21 @@ $('form').submit(function(e) {
   }
   else {
     $('#errorText').text(result.error);
+    hideLoadingGif();
   } 
 })
 
+// *********** ajax loader ***********
+
+function showLoadingGif() {
+  $('#loadingGif').show();
+  $('form').prop('disabled', true);
+}
+
+function hideLoadingGif() {
+  $('#loadingGif').hide();
+  $('form').prop('disabled', false);
+}
 
 
 

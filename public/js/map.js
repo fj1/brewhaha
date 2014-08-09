@@ -9,8 +9,6 @@ var currentMarkers = [];
 
 // ************ dynamically build map ************
 function buildMap(mapData) {
-  console.log("in map.js, map_data is ", mapData);
-
   clearMap();
 
   var length = mapData.length;
@@ -34,9 +32,6 @@ function buildMap(mapData) {
     var marker = L.marker([lat, lng]).addTo(map);
 
     marker.venue = venue;
-    marker.on('click', function () {
-      console.log("what is it", this.venue);
-    });
     currentMarkers.push(marker);
 
     // ** set array of markers **
@@ -64,6 +59,9 @@ function buildMap(mapData) {
 
   // zoom map to fit all the markers
   map.fitBounds(latlongs);
+
+  // hide loadingGif and enable form
+  hideLoadingGif();
 
 } // end buildMap function
 

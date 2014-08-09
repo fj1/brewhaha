@@ -12,9 +12,6 @@ body {
   height: 100%;
 }
 
-/*TO DO .... LOOK AT THIS*/
-/* set the container div to 100% */
-/* so that we can set its children's heights to a percentage */
 #rightDiv {
   height: 100%;
 }
@@ -22,8 +19,6 @@ body {
 /************ user div ************/
 
 #userDiv {
-  /*height: 60%;*/
-  /*height: 100%;*/
   text-align: center;
 }
 
@@ -83,11 +78,9 @@ body {
   font-weight: 700;
 }
 
-/************ detail div ************/
-
-/*#detailDiv {
-  text-align: center;
-}*/
+#loadingGif {
+  display: none;
+}
 
 /************ map div ************/
 
@@ -100,6 +93,9 @@ div.leaflet-popup-content {
   font-size: 1.5em;
 }
 
+marker.property {
+  background-color: #f8ae29;
+}
 
 
 

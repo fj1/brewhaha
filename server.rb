@@ -15,7 +15,7 @@ $searchCache = {}
 def search(params)
   puts params
   # Compose cache key
-  key = "#{params[:locality]};#{params[:region]};#{params[:locationTypeDisplay]}"
+  key = "#{params[:locality]};#{params[:region]};#{params[:locationType]}"
 
   # First check if the key exists in cache (searchCache)
   if $searchCache.include?(key)
@@ -55,7 +55,7 @@ helpers do
   end
 
   def locType 
-    [ "Micro Brewery", "Macro Brewery", "Brewpub",
+    [ "Micro", "Macro", "Nano", "Brewpub",
       "Tasting", "Restaurant", "Cidery", "Meadery"]
   end
 end
@@ -74,6 +74,8 @@ get '/query' do
   # couldn't use json parse and instead used .inspect
   # because of the way the gem returned a class and not a json
   puts api_resp.inspect
+  puts "api_resp.size is " + api_resp.size.to_s
+
   if api_resp.size > 0
     # then iterate thru api_resp HASH to grab necessary info and save into @map_data
     @map_data = []

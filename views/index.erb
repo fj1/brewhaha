@@ -16,6 +16,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <!-- foundation -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/css/foundation.min.css"/>
+    <!-- style.css -->
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 <!--     <style type="text/css">
       /* boxing everything for debugging */
@@ -42,6 +43,7 @@
         <form>
           <!-- user text input -->
           <input type="text" id="userInput" name="userInput" placeholder="enter a city or five digit zipcode" onfocus="this.value=''"/>
+
           <!-- state dropdown -->
           <select name="state_name" id="stateName"> 
             <option>State</option>           
@@ -49,41 +51,45 @@
               <option value="<%= state_name %>"><%= state_name %></option>
             <% end %>
           </select>
+
           <!-- location_type dropdown -->
           <select name="loc_type" id="locType">
             <option>Location Type</option>
             <% locType.each do |loc_type| %>
-              <option value="<%= loc_type %>"><%= loc_type %></option>
+              <option value="<%= loc_type.downcase %>"><%= loc_type %></option>
             <% end %>
           </select>
+
           <!-- organic switch -->
           <!-- <div class="switch round medium">
             <input id="checkboxSwitch" type="checkbox"/>
             <label for="checkboxSwitch"></label>
             <span>Organic</span>
           </div> -->
+
           <!-- submit -->
           <button class="button round" id="submit" value="Submit">Submit</button>
+
           <!-- error msg -->
           <p id="errorText" class="conversation"></p>
+
         </form>
 
-        <div id="detailDiv" class="conversation"></div>
+          <!-- ajax loader -->
+          <div id="loadingGif">
+            <img src="images/ajax-loader-orange.gif">
+          </div>
 
-      </div> <!-- end class="small-3 large-3 columns" -->
+        <!-- detailDiv -->
+        <div id="detailDiv" class="conversation">       
+        </div>
+
+      </div> 
       
-
       <!-- **************** MAP **************** -->
       <div id="rightDiv" class="small-12 large-9 columns">
         <div id="map"></div>
-
-        <!-- **************** DETAIL DIV **************** -->
-        <!-- <div class="row" id="detailDiv">
-          <div id="detailDivLeft" class="small-6 large-6 columns">future brewery details</div>
-          <div id="detailDivRight"class="small-6 large-6 columns">right detail div</div>
-        </div>  --><!-- end small class="row" -->
-
-      </div> <!-- end class="small-9 large-9 columns" -->
+      </div> 
     </div>  <!-- end large class="row" -->
 
     <!-- **************** requiring all the things **************** -->
