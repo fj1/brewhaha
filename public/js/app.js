@@ -90,7 +90,7 @@ $('form').submit(function(e) {
   e.preventDefault();
   getInput();
   showLoadingGif(); 
-  $('#detailDiv').text("");
+  $('#errorText').text("");
 
   var result = checkInput();
 
