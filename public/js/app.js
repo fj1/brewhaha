@@ -91,6 +91,7 @@ $('form').submit(function(e) {
   getInput();
   showLoadingGif(); 
   $('#errorText').text("");
+  $('#detailDiv').text("");
 
   var result = checkInput();
 
