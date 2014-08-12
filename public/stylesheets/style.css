@@ -14,6 +14,7 @@ body {
 
 #rightDiv {
   height: 100%;
+  padding-right: 0;
 }
 
 /************ user div ************/
@@ -27,37 +28,42 @@ body {
   display: inline-block;
   height: 6em;
   width: auto;
-  padding: 10px 0px 0px 5px;
+  padding: 10px 5px 0px 3px;
 }
 
 #title {
   font-family: 'Josefin Sans', sans-serif; 
   font-weight: 700;
-  font-size: 4em;
+  font-size: 3em;
   text-align: center;
-  padding-top: 13px;
+  padding-top: 8%;
 }
 
 .greeting {
   font-size: 2em;
-  padding-bottom: 2em;
+  /*padding-bottom: .7em;*/
+}
+
+.intro {
+  font-size: 1.3em;
 }
 
 .conversation {
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 #userInput, #stateName, #locType {
-  font-size: 1.25em;
+  font-size: 1em;
 }
 
 #submit {
   background-color: #f8ae29;
   color: black;
   font-family: 'Josefin Sans', sans-serif; 
-  font-size: 1.3em;
+  font-size: 1em;
   border: 2px solid #e69708;
   outline: none;
+  padding: .7em 1.33em .7em 1.33em;
 }
 
 #submit:hover {
@@ -76,6 +82,7 @@ body {
 #errorText {
   color: red;
   font-weight: 700;
+  font-size: 1.33em;
 }
 
 #loadingGif {
@@ -90,7 +97,7 @@ body {
 }
 
 div.leaflet-popup-content {
-  font-size: 1.5em;
+  font-size: 1.33em;
 }
 
 marker.property {
