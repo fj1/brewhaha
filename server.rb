@@ -67,8 +67,9 @@ end
 get '/query' do
   # puts params
   api_resp = search(params)
+  # puts api_resp
 
-  # puts @map_data
+  puts @map_data
 
   # tangent!
   # couldn't use json parse and instead used .inspect

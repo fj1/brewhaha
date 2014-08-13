@@ -11,7 +11,7 @@ $('#userInput').on('click', function() {
 
 // *********** grab user input ***********
 var getInput = function(){
-  user_text = $('#userInput').val();
+  user_text = $('#userInput').val().toLowerCase();
   user_state = $('#stateName').val();
   user_loc_type = $('#locType').val();
   console.log("user_loc_type is ", user_loc_type);
