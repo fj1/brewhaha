@@ -100,7 +100,7 @@ $('form').submit(function(e) {
       url: '/query',
       type: 'GET',
       data: submit_data,
-      // next line tells jquery to except json
+      // next line tells jquery to accept json
       dataType: 'json',
       success: function(data) {
         if (data["error"]) {
