@@ -35,7 +35,8 @@ var checkInput = function() {
     inPlanning: "N",
     isClosed: "N",
     openToPublic: "Y",
-    status: "verified"
+    status: "verified", 
+    countryIsoCode: "US"
   };
 
   if (user_state != "State") {
