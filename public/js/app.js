@@ -72,7 +72,7 @@ var checkInput = function() {
   }
 
   // check that user entered something
-  if (_.size(submit_data) === 4) {
+  if (_.size(submit_data) === 5) {
     return {
       success: false,
       error: "Please choose filters for your search."
