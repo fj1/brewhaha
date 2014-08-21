@@ -1,0 +1,16 @@
+Brewhaha
+
+DataBeast is a demo web application, and is one of my senior projects for MakerSquare. It is a fun app designed to find a breweries based on user input.
+
+
+This app was built with:
+
+- Ruby, ERB
+- Sinatra
+- JavaScript, jQuery
+- HTML, CSS
+- Leaflet, a JavaScript mapping library: leafletjs.com
+- BreweryDB API: brewerydb.com
+
+
+Viewable at: http://brewmap.herokuapp.com/
