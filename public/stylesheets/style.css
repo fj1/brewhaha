@@ -46,6 +46,7 @@ body {
 
 .intro {
   font-size: 1.3em;
+  margin: 0;
 }
 
 .conversation {
@@ -54,6 +55,7 @@ body {
 
 #userInput, #stateName, #locType {
   font-size: 1em;
+  margin: 5px;
 }
 
 #submit {

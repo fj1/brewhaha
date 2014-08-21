@@ -43,7 +43,7 @@ var checkInput = function() {
     submit_data['region'] = user_state;
   }
 
-  if (user_loc_type != "Location Type") {
+  if (user_loc_type != "Location Type (optional)") {
     submit_data['locationType'] = user_loc_type;
   }
 

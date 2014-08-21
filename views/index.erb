@@ -43,6 +43,7 @@
         <form>
           <!-- user text input -->
           <input type="text" id="userInput" name="userInput" placeholder="enter a city or five digit zipcode" onfocus="this.value=''"/>
+          <p class="intro"> ...and/or choose a state:</p>
 
           <!-- state dropdown -->
           <select name="state_name" id="stateName"> 
@@ -54,7 +55,7 @@
 
           <!-- location_type dropdown -->
           <select name="loc_type" id="locType">
-            <option>Location Type</option>
+            <option>Location Type (optional)</option>
             <% locType.each do |loc_type| %>
               <option value="<%= loc_type.downcase %>"><%= loc_type %></option>
             <% end %>
