@@ -12,5 +12,10 @@ This app was built with:
 - Leaflet, a JavaScript mapping library: leafletjs.com
 - BreweryDB API: brewerydb.com
 
-
 Viewable at: http://brewmap.herokuapp.com/
+
+To serve locally:
+1. Install gems via bundler by running `bundle install`
+2. Run brewery > bundle install
+3. Run brewery > ruby server.rb
+4. Then you can view the app at http://localhost:4567/
